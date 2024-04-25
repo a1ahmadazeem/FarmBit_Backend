@@ -35,7 +35,7 @@ app.get("/ping", (req, res) => {
 app.use("/users", authRoutes);
 
 app.use("/", (req, res, next) => {
-  res.status("404").json({ message: "Not found" });
+  res.status("404").json({ message: "Not found__" });
 });
 
 app.listen(PORT, () => {
