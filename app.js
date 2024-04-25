@@ -11,7 +11,7 @@ mongoose
   .connect(
     "mongodb+srv://ahmadazeem1586:nOWaH5Ljoj7hA7wu@farmbit.vckwmma.mongodb.net/FarmBit?retryWrites=true&w=majority",
     {
-      dbName: "farmbit",
+      // dbName: "farmbit",
       useNewUrlParser: true,
       useUnifiedTopology: true,
     }
