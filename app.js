@@ -8,7 +8,7 @@ const authRoutes = require("./routes/users");
 
 mongoose
   .connect(process.env.MONGO_URI, {
-    dbName: "TheNodeAuth",
+    // dbName: "TheNodeAuth",
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
