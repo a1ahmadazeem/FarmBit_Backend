@@ -8,11 +8,14 @@ const PORT = 3000;
 const authRoutes = require("./routes/users");
 
 mongoose
-  .connect(process.env.MONGO_URI, {
-    dbName: "farmbit",
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    "mongodb+srv://ahmadazeem1586:nOWaH5Ljoj7hA7wu@farmbit.vckwmma.mongodb.net/FarmBit?retryWrites=true&w=majority",
+    {
+      dbName: "farmbit",
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then(() => {
     console.log("Database connection Success.");
   })
