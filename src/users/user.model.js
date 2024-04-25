@@ -16,8 +16,8 @@ const userSchema = new Schema(
 
     accessToken: { type: String, default: null },
 
-    referralCode: { type: String, unique: true },
-    referrer: { type: String, default: null },
+    // referralCode: { type: String, unique: true },
+    // referrer: { type: String, default: null },
   },
   {
     timestamps: {
