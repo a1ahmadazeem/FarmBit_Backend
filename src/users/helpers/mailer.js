@@ -27,12 +27,13 @@ async function sendEmail(email, code) {
 
     // Create the SMTP transport.
     let transporter = nodemailer.createTransport({
-      host: smtpEndpoint,
-      port: port,
-      secure: true, // true for 465, false for other ports
+      transport: "smtp",
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false,
       auth: {
-        user: smtpUsername,
-        pass: smtpPassword,
+        user: "hello@uniorx.com",
+        pass: "uniorx@plastk",
       },
     });
 

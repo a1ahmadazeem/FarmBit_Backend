@@ -19,7 +19,7 @@ const userSchema = Joi.object().keys({
   email: Joi.string().email({ minDomainSegments: 2 }),
   password: Joi.string().required().min(4),
   confirmPassword: Joi.string().valid(Joi.ref("password")).required(),
-  referrer: Joi.string(),
+  // referrer: Joi.string(),
 });
 
 exports.Signup = async (req, res) => {
@@ -54,41 +54,41 @@ exports.Signup = async (req, res) => {
     delete result.value.confirmPassword;
     result.value.password = hash;
 
-    let code = Math.floor(100000 + Math.random() * 900000);
+    // let code = Math.floor(100000 + Math.random() * 900000);
 
-    let expiry = Date.now() + 60 * 1000 * 15; //15 mins in ms
+    // let expiry = Date.now() + 60 * 1000 * 15; //15 mins in ms
 
-    const sendCode = await sendEmail(result.value.email, code);
+    // const sendCode = await sendEmail(result.value.email, code);
 
-    if (sendCode.error) {
-      return res.status(500).json({
-        error: true,
-        message: "Couldn't send verification email.",
-      });
-    }
-    result.value.emailToken = code;
-    result.value.emailTokenExpires = new Date(expiry);
+    // if (sendCode.error) {
+    //   return res.status(500).json({
+    //     error: true,
+    //     message: "Couldn't send verification email.",
+    //   });
+    // }
+    // result.value.emailToken = code;
+    // result.value.emailTokenExpires = new Date(expiry);
 
-    //Check if referred and validate code.
-    if (result.value.hasOwnProperty("referrer")) {
-      let referrer = await User.findOne({
-        referralCode: result.value.referrer,
-      });
-      if (!referrer) {
-        return res.status(400).send({
-          error: true,
-          message: "Invalid referral code.",
-        });
-      }
-    }
-    result.value.referralCode = referralCode();
+    // //Check if referred and validate code.
+    // if (result.value.hasOwnProperty("referrer")) {
+    //   let referrer = await User.findOne({
+    //     referralCode: result.value.referrer,
+    //   });
+    //   if (!referrer) {
+    //     return res.status(400).send({
+    //       error: true,
+    //       message: "Invalid referral code.",
+    //     });
+    //   }
+    // }
+    // result.value.referralCode = referralCode();
     const newUser = new User(result.value);
     await newUser.save();
 
     return res.status(200).json({
       success: true,
       message: "Registration Success",
-      referralCode: result.value.referralCode,
+      // referralCode: result.value.referralCode,
     });
   } catch (error) {
     console.error("signup-error", error);

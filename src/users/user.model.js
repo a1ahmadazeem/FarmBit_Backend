@@ -6,7 +6,7 @@ const userSchema = new Schema(
   {
     userId: { type: String, unique: true, required: true },
     email: { type: String, required: true, unique: true },
-    active: { type: Boolean, default: false },
+    active: { type: Boolean, default: true },
     password: { type: String, required: true },
     resetPasswordToken: { type: String, default: null },
     resetPasswordExpires: { type: Date, default: null },
